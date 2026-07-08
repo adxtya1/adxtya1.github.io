@@ -1,13 +1,667 @@
-<HTML>
-<HEAD>
-<TITLE> HIIIIII </TITLE>
-</HEAD>
-<BODY BGCOLOR="YELLOW">
-<MARQUEE BGCOLOR= "RED"> NOOOO </MARQUEE>
-<HR> I AM, <BR> NOBODY </BR> </HR>
-<B> HELLO </B> <I> MY FRIEND </I>
-<HR> GET LOST <BR> STRANGER </BR> </HR>
+
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Best Webpage</title>
+<style>
+.scroll-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#scrollTopBtn, #scrollBottomBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+:root {
+    --bg: #f5f7fa;
+    --text: #222;
+    --card: #fff;
+    --nav: rgba(255,255,255,0.85);
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #eee;
+    --card: #1e1e1e;
+    --nav: rgba(30,30,30,0.9);
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, Arial;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
+
+/* TOP BAR */
+.topbar {
+    position: sticky;
+    top: 0;
+    background: var(--nav);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* MENU WRAPPER */
+.menu {
+    position: relative;
+}
+
+/* 🔥 BIGGER CATEGORIES BUTTON */
+.menu-btn {
+    border: none;
+    background: var(--card);
+    padding: 12px 22px;   /* increased size */
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 17px;      /* slightly bigger text */
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.05);
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 190px;
+    background: var(--card);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    z-index: 1000;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.dropdown a:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+/* CONTENT */
+.container {
+    padding: 20px;
+}
+
+/* PAGES */
+.section {
+    display: none;
+    animation: fade 0.3s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CARD */
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* DARK BUTTON */
+.toggle {
+    border: none;
+    padding: 10px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: var(--card);
+    margin-right: 75px;
+}
+ img {
+width: 600px; height: 400px;
+border: 1px;
+            transition: transform 0.5s ease; /* smooth animation */
+        }
+
+.image-box {
+    display: inline-block;
+    margin: 10px;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.image-box:hover {
+    transform: scale(1.1);
+box-shadow: 0 10px 25px rgba(0,0,0,1.8);
+}
+
+.image-box img {
+    width: 610px;
+    height: 410px;
+    display: block;
+    object-fit: contain;
+    background-color: #000;
+}
+}
+
+.caption {
+    text-align: center;
+    padding: 6px;
+    font-size: 14px;
+}
+
+
+#shuffleBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#p6 .image-box img {
+    width: 300 !important;
+    height: 500 !important;
+    max-width: 100% !important;
+}
+#p7 .image-box img {
+    width: 320 !important;
+    height: 500 !important;
+    max-width: 100% !important;
+}
+#p8 .image-box img {
+    width: 320 !important;
+    height: 500 !important;
+    max-width: 100% !important;
+}
+    #p9 .image-box img {
+    width: 320 !important;
+    height: 500 !important;
+    max-width: 100% !important;
+}
+        #p11 .image-box img {
+    width: 600 !important;
+    height: 400 !important;
+    max-width: 100% !important;
+}
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+
+  /* Make all images responsive */
+  img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .image-box img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Reduce spacing for mobile */
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .topbar {
+    padding: 10px;
+  }
+
+  /* Smaller menu button */
+  .menu-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  /* Full-width dropdown */
+  .dropdown {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Smaller floating buttons */
+  #scrollTopBtn, 
+  #scrollBottomBtn, 
+  #shuffleBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .scroll-container {
+    bottom: 15px;
+    right: 15px;
+    gap: 8px;
+  }
+
+  /* Fix special tall images */
+  #p6 .image-box img {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+    #p11 {
+  padding: 30px;
+  text-align: center;
+}
+
+#p11 .card {
+  max-width: 500px;
+  margin: auto;
+}
+
+#p11 h2 {
+  margin-bottom: 15px;
+}
+
+#p11 input,
+#p11 textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+#p11 textarea {
+  height: 120px;
+  resize: none;
+}
+
+#p11 button {
+  padding: 10px 20px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#p11 button:hover {
+  background: #555;
+}
+ 
+</style>
+</head>
+<body>
+<!-- TOP BAR -->
+<div class="topbar">
+<div class="menu">
+<button class="menu-btn" onclick="toggleMenu()">☰ Categories</button>
+<div class="dropdown" id="dropdown">
+<a onclick="go('p1')" target="anotherframe"><b>Home</b></a>
+<a onclick="go('p2')" target="anotherframe"><b>page1</b></a>
+<a onclick="go('p3')" target="anotherframe"><b>page2</b></a>
+<a onclick="go('p4')" target="anotherframe"><b>page3</b></a>
+<a onclick="go('p5')" target="anotherframe"><b>page4</b></a>
+<a onclick="go('p6')" target="anotherframe"><b>page5</b></a>
+<a onclick="go('p7')" target="anotherframe"><b>page6</b></a>
+<a onclick="go('p8')" target="anotherframe"><b>page7</b></a>
+<a onclick="go('p9')" target="anotherframe"><b>page8</b></a>
+<a onclick="go('p10')" target="anotherframe"><b>page9</b></a>
+<a onclick="go('p11')" target="anotherframe"><b>Review</b></a>
+</div>
+</div>
+<button class="toggle" onclick="toggleDark()">🌙</button>
+</div>
+<!-- CONTENT -->
+
+<div class="container">
+<div class="section active" id="p1">
+<div class="card"><h2>Home</h2>
+<ul style="disk">
+<li><p>Welcome to <b>Adxtya's</b> web page❤</p></li>
+<li><p>Click on <b>Categories</b> to select your Favourite</p></li>
+<li><p>Just <b>swipe</b> or use <b>arrow keys</b> to explore faster</p></li>
+<li><p>Use the <b>shuffle</b> button, if you are bored to scroll</p></li>
+<li><p><b>Click on images to explore the content</b></p></li>
+<li><p>Use the <b>Dark/Light mode</b> in the top right corner as per your requirements</p></li>
+<li><p>Use the <b>scroll up/down</b> button for fast scrolling</p></li>
+<li><p>Dont forget to leave a <b>review</b> in <b>section 11</b> so we can improve in the future</p></li>
+<li><p>There will be more future updates so stay tuned to find out</p></li>
+<li><p>Enjoy!</p></li>
+</ul>
+<br/><b>Interesting WEBS:</b>
+<br/><a href="https://perchance.org/ai-text-to-image-generator" target="_blank">Free AI Image Generator</a>    
+</div>
+</div>
+
+<div class="section" id="p2">
+<div class="card"><h2>page1</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+
+</div>
+</div>
+<div class="section" id="p3">
+<div class="card"><h2>page2</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p4">
+<div class="card"><h2>page3</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p5">
+<div class="card"><h2>page4</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p6">
+<div class="card"><h2>page5</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p7">
+<div class="card"><h2>page6</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p8">
+<div class="card"><h2>page7</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p9">
+<div class="card"><h2>page8</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p10">
+<div class="card"><h2>page9</h2>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+<a href="" target="anotherframe">
+<img alt="" src=""/></a>
+</div>
+</div>
+
+<div class="section" id="p11">
+<div class="card">
+<h2>Leave a Review</h2>
+<form action="https://formspree.io/f/mrejbzeb" method="POST">
+<input name="_next" type="hidden" value="https://alien.ct.ws/thankyou.html"/>
+<input name="name" placeholder="Your Name" required="" type="text"/>
+<input name="email" placeholder="Your Email (optional)" type="email"/>
+<textarea name="message" placeholder="Write your review..." required=""></textarea>
+<button type="submit">Send Review</button>
+<input name="_subject" type="hidden" value="Website Review!"/>
+</form>
+</div>
+</div>
+</div>
+
+<script>
+
+// PAGE SWITCH
+function go(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('dropdown').classList.remove('show');
+}
+
+// MENU TOGGLE
+function toggleMenu() {
+    document.getElementById('dropdown').classList.toggle('show');
+}
+
+// CLOSE ON OUTSIDE CLICK
+window.onclick = function(e) {
+    if (!e.target.closest('.menu')) {
+        document.getElementById('dropdown').classList.remove('show');
+    }
+};
+
+// DARK MODE MEMORY
+function toggleDark() {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme',
+        document.body.classList.contains('dark') ? 'light' : 'dark'
+    );
+}
+
+// LOAD THEME
+window.onload = () => {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+    }
+};
+document.querySelectorAll('a > img').forEach(img => {
+    const link = img.parentElement;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'image-box';
+
+    const caption = document.createElement('div');
+    caption.className = 'caption';
+    caption.innerText = img.alt || "No description";
+
+    link.parentNode.insertBefore(wrapper, link);
+    wrapper.appendChild(link);
+    wrapper.appendChild(caption);
+});
+window.onload = function () {
+  const topBtn = document.getElementById("scrollTopBtn");
+  const bottomBtn = document.getElementById("scrollBottomBtn");
+
+  // Scroll to top
+  topBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  // Scroll to bottom
+  bottomBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth"
+    });
+  });
+};
+
+// SHUFFLE IMAGES (FIXED)
+document.addEventListener("DOMContentLoaded", function () {
+  const shuffleBtn = document.getElementById("shuffleBtn");
+
+  shuffleBtn.addEventListener("click", function () {
+    const container = document.querySelector(".section.active .card");
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll(".image-box"));
+
+    // Fisher-Yates shuffle
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+
+    // Re-append in shuffled order
+    items.forEach(el => container.appendChild(el));
+  });
+});
+    // ===== SECTION ORDER =====
+const sectionIds = [
+    "p1","p2","p3","p4","p5",
+    "p6","p7","p8","p9","p10","p11"
+];
+
+let currentIndex = 0;
+
+// Update index when section changes
+function updateIndex(id) {
+    currentIndex = sectionIds.indexOf(id);
+}
+
+// Hook into your existing go() function
+const originalGo = go;
+go = function(id) {
+    originalGo(id);
+    updateIndex(id);
+};
+
+// NEXT / PREVIOUS (LOOP)
+function goToNextSection() {
+    currentIndex = (currentIndex + 1) % sectionIds.length;
+    go(sectionIds[currentIndex]);
+}
+
+function goToPreviousSection() {
+    currentIndex = (currentIndex - 1 + sectionIds.length) % sectionIds.length;
+    go(sectionIds[currentIndex]);
+}
+    document.addEventListener("keydown", function(e) {
+    const tag = document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+
+    if (e.key === "ArrowRight") {
+        goToNextSection();
+    } 
+    else if (e.key === "ArrowLeft") {
+        goToPreviousSection();
+    }
+});
+    let startX = 0;
+let startY = 0;
+
+document.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+    let endY = e.changedTouches[0].clientY;
+
+    let diffX = endX - startX;
+    let diffY = endY - startY;
+
+    // Only strong horizontal swipe
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 80) {
+        if (diffX > 0) {
+            goToPreviousSection();
+        } else {
+            goToNextSection();
+        }
+    }
+}, { passive: true });
+    
   
-<A HREF= "https://www.youtube.com" TARGET="ANOTHERFRAME"> YOUTUBE </A>
-</BODY>
-</HTML>
+</script>
+<div class="scroll-container"><div id="shuffleBtn">⟳</div>
+<div id="scrollTopBtn">↑</div>
+<div id="scrollBottomBtn">↓</div>
+</div>
+</body>
+</html>
