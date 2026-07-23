@@ -1,5 +1,4 @@
 
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -34,24 +33,63 @@
 }
 
 body.dark {
-    --bg: #121212;
-    --text: #eee;
-    --card: #1e1e1e;
-    --nav: rgba(30,30,30,0.9);
+    --bg:#121212;
+    --text:#eee;
+    --card:#1e1e1e;
+    --nav:rgba(30,30,30,0.9);
 }
-
+    
+    body.dark .card{
+    background:rgba(30,30,30,0.75);
+    border:1px solid rgba(255,255,255,0.1);
+}
+    body.dark .menu-btn{
+    background:#2d2d2d;
+    color:#fff;
+    box-shadow:0 6px 18px rgba(255,255,255,0.08);
+}
+    
 body {
     margin: 0;
     font-family: system-ui, Arial;
-    background: var(--bg);
+    background: var(--bg) ;
     color: var(--text);
     transition: 0.3s;
 }
 
+    body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#4f46e5;
+    border-radius:50%;
+    filter:blur(120px);
+    top:-150px;
+    left:-150px;
+    opacity:0.35;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#ec4899;
+    border-radius:50%;
+    filter:blur(120px);
+    bottom:-150px;
+    right:-150px;
+    opacity:0.3;
+    z-index:-1;
+}
+    
 /* TOP BAR */
 .topbar {
     position: sticky;
     top: 0;
+    z-index: 9999;
     background: var(--nav);
     backdrop-filter: blur(10px);
     display: flex;
@@ -121,7 +159,9 @@ body {
 /* PAGES */
 .section {
     display: none;
-    animation: fade 0.3s ease;
+    transform:translateZ(0);
+    backface-visibility:hidden;
+     animation: fade 0.3s ease;
 }
 
 .section.active {
@@ -135,10 +175,12 @@ body {
 
 /* CARD */
 .card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+     background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.4);
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 12px 35px rgba(0,0,0,0.12);
 }
 
 /* DARK BUTTON */
@@ -221,8 +263,22 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
     max-width: 100% !important;
 }
 /* MOBILE OPTIMIZATION */
-@media (max-width: 768px) {
+@media (max-width: 768px){
+    
+    .website-counter{
+        position:static !important;
+        transform:none !important;
 
+        width:100%;
+        max-width:280px;
+        height:160px;
+
+        margin:20px auto 25px auto;
+
+        right:auto;
+        top:auto;
+    }
+    
   /* Make all images responsive */
   img {
     width: 100% !important;
@@ -273,13 +329,13 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
     right: 15px;
     gap: 8px;
   }
-
+}
   /* Fix special tall images */
   #p6 .image-box img {
     width: 100% !important;
     height: auto !important;
   }
-}
+    
     #p11 {
   padding: 30px;
   text-align: center;
@@ -323,6 +379,146 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 #p11 button:hover {
   background: #555;
 }
+    
+    .image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.25);
+    color: white;
+    opacity: 0.35;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.fullscreen-btn:hover {
+    opacity: 0.8;
+}
+    
+    /* STATISTICS */
+.stats-container {
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.stats-container h2 {
+    text-align:center;
+    margin-bottom:25px;
+}
+.stat-box {
+    margin:20px 0;
+}
+.stat-title {
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+.bar-background {
+    height:18px;
+    width:100%;
+    background:rgba(128,128,128,0.25);
+    border-radius:20px;
+    overflow:hidden;
+}
+.bar-fill {
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+    transition:width 1s ease;
+}
+.stat-number {
+    margin-top:5px;
+    text-align:right;
+    font-size:14px;
+}
+   .section-counter {   
+    position:absolute;
+    top:10px;
+    right:140px;
+    padding:10px 22px;
+    min-width:90px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    font-size:20px;
+    font-weight:700;
+    z-index:10000;
+}
+
+.section-counter .big-number{
+
+    font-size:22px;
+
+}
+
+@keyframes counterAppear{
+    from{
+        opacity:0;
+         transform:translateY(-5px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+    //view counter
+
+ .website-counter{
+    width:260px;
+    height:180px;
+    background:#111;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    margin-left:auto;
+    margin-right:40px;
+    box-shadow:0 0 25px rgba(255,255,255,0.15);
+}
+
+    .counter-heading{
+    font-size:18px;
+    letter-spacing:2px;
+    opacity:0.8;
+}
+
+
+#viewNumber{
+    font-size:55px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+
+.counter-status{
+    color:#00ff88;
+    font-size:14px;
+}
+    
+   .website-counter{
+    position:absolute;
+    right:50px;
+    top:19%;
+    transform:translateY(-50%);
+}
  
 </style>
 </head>
@@ -350,9 +546,20 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <!-- CONTENT -->
 
 <div class="container">
-<div class="section active" id="p1">
+<div class="section active home-container" id="p1">
 <div class="card"><h2>Home</h2>
 <ul style="disk">
+    <div class="website-counter">
+    <div class="counter-heading">
+        WEBSITE VIEWS
+    </div>
+    <div id="viewNumber">
+        0
+    </div>
+    <div class="counter-status">
+        ● LIVE COUNTER
+    </div>
+</div>
 <li><p>Welcome to <b>Adxtya's</b> web page❤</p></li>
 <li><p>Click on <b>Categories</b> to select your Favourite</p></li>
 <li><p>Just <b>swipe</b> or use <b>arrow keys</b> to explore faster</p></li>
@@ -365,33 +572,29 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <li><p>Enjoy!</p></li>
 </ul>
 <br/><b>Interesting WEBS:</b>
+<br/><a href="https://adxtya1.github.io/" target="_blank">Github web</a>        
 <br/><a href="https://perchance.org/ai-text-to-image-generator" target="_blank">Free AI Image Generator</a>    
+</div>
+    <div class="stats-container">
+    <h2>📊 Collection Statistics</h2>
+    <div id="homeStats"></div>
 </div>
 </div>
 
 <div class="section" id="p2">
 <div class="card"><h2>page1</h2>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+<a href="https://www.youtube.com/watch?v=AETFvQonfV8" target="anotherframe">
+<img alt="Hanuman Chalisa" src="https://i.ytimg.com/vi/AETFvQonfV8/maxresdefault.jpg"/></a>
+<a href="https://www.youtube.com/watch?reload=9&v=U-Qw6mAM8Tk" target="anotherframe">
+<img alt="" src="https://i.ytimg.com/vi/U-Qw6mAM8Tk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA61UzZ78ojtRn2gKbygeVXpResrQ"/></a>
 
 </div>
 </div>
 <div class="section" id="p3">
 <div class="card"><h2>page2</h2>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+<a href="https://9anime.org.lv/anime/one-piece/" target="anotherframe">
+<img alt="One Piece" src="https://m.media-amazon.com/images/I/71+h3gEoEZL._AC_UF894,1000_QL80_.jpg"/></a>    
+
 </div>
 </div>
 
@@ -399,12 +602,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page3</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -412,12 +610,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page4</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -425,12 +618,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page5</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -438,12 +626,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page6</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -451,12 +634,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page7</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -464,12 +642,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page8</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -477,12 +650,7 @@ box-shadow: 0 10px 25px rgba(0,0,0,1.8);
 <div class="card"><h2>page9</h2>
 <a href="" target="anotherframe">
 <img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
-<a href="" target="anotherframe">
-<img alt="" src=""/></a>
+
 </div>
 </div>
 
@@ -526,8 +694,11 @@ window.onclick = function(e) {
 function toggleDark() {
     document.body.classList.toggle('dark');
     localStorage.setItem('theme',
-        document.body.classList.contains('dark') ? 'light' : 'dark'
+        document.body.classList.contains('dark') ? 'dark' : 'light'
     );
+}
+    if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
 }
 
 // LOAD THEME
@@ -657,7 +828,224 @@ document.addEventListener("touchend", e => {
     }
 }, { passive: true });
     
-  
+    //full screen button
+    document.querySelectorAll("img").forEach(img => {
+
+    let wrapper = document.createElement("div");
+    wrapper.className = "image-wrapper";
+
+    img.parentNode.insertBefore(wrapper, img);
+    wrapper.appendChild(img);
+
+
+    let btn = document.createElement("button");
+
+    btn.className = "fullscreen-btn";
+    btn.innerHTML = "⛶";
+
+    btn.onclick = function(e){
+        e.preventDefault(); 
+        e.stopPropagation();
+
+        openFullscreen(img);
+    };
+
+
+    wrapper.appendChild(btn);
+
+});
+
+
+function openFullscreen(img){
+
+    if(img.requestFullscreen){
+        img.requestFullscreen();
+    }
+
+}
+    //statistics
+  function createStatistics(){
+
+    let sections = document.querySelectorAll(".section");
+
+    let stats = [];
+
+    sections.forEach(section => {
+        let id = section.id;
+        
+        // ignore home and review
+        if(id === "p1" || id === "p11") return;
+        let images = section.querySelectorAll("img");
+        let count = 0;
+        images.forEach(img=>{
+            if(img.src && img.getAttribute("src") !== ""){
+                count++;
+            }
+        });
+        let title = section.querySelector("h2");
+        stats.push({
+            name: title ? title.innerText : id,
+            count: count
+        });
+    });
+    let highest = Math.max(...stats.map(x=>x.count));
+    let container = document.getElementById("homeStats");
+    stats.forEach(item=>{
+        let width = highest ? (item.count/highest)*100 : 0;
+        container.innerHTML += `
+        <div class="stat-box">
+
+            <div class="stat-title">
+                <span>${item.name}</span>
+                <span id="num-${item.name}">0</span>
+            </div>
+
+            <div class="bar-background">
+                <div class="bar-fill" data-width="${width}"></div>
+            </div>
+        </div>
+        `;
+    });
+
+    // animate bars
+    setTimeout(()=>{
+        document.querySelectorAll(".bar-fill").forEach(bar=>{
+            bar.style.width = bar.dataset.width + "%";
+        });
+    },200);
+
+    // animate numbers
+    stats.forEach(item=>{
+        let element=document.getElementById("num-"+item.name);
+        let current=0;
+        let speed=Math.ceil(item.count/50);
+        let timer=setInterval(()=>{
+            current += speed;
+            if(current>=item.count){
+                current=item.count;
+                clearInterval(timer);
+            }
+            element.innerHTML=current+" Images";
+        },20);
+    });
+}
+
+    function addSectionCounters(){
+
+    document.querySelectorAll(".section").forEach(section=>{
+
+
+        if(section.id==="p1" || section.id==="p11") return;
+
+
+        let images=section.querySelectorAll("img");
+
+        let count=0;
+
+
+        images.forEach(img=>{
+
+            if(img.getAttribute("src") && img.getAttribute("src")!==""){
+                count++;
+            }
+
+        });
+        let title=section.querySelector("h2");
+        let counter=document.createElement("div");
+        counter.className="section-counter";
+        
+counter.innerHTML=`
+<div class="big-number">
+ 0
+</div>
+
+`;
+   title.insertAdjacentElement(
+    "afterend",
+    counter
+);
+
+        let number=counter.querySelector(".big-number");
+
+
+        let current=0;
+
+        let speed=Math.max(1,Math.ceil(count/40));
+
+
+        let timer=setInterval(()=>{
+
+
+            current+=speed;
+
+
+            if(current>=count){
+
+                current=count;
+                clearInterval(timer);
+
+            }
+
+            number.innerHTML=current;
+
+
+        },25);
+
+
+    });
+
+}
+
+
+window.addEventListener("load",()=>{
+
+    createStatistics();   // Home statistics
+    addSectionCounters(); // Section counters
+
+});
+   
+    //view counter
+    fetch("counter.php?show=1")
+
+.then(response => response.text())
+
+.then(data => {
+
+
+let target = Number(data);
+
+let current = Number(
+document.getElementById("viewNumber").innerHTML
+);
+
+
+let speed = Math.ceil(target / 50);
+
+
+let animation = setInterval(()=>{
+
+
+current += speed;
+
+
+if(current >= target){
+
+current = target;
+
+clearInterval(animation);
+
+}
+
+
+document.getElementById("viewNumber").innerHTML =
+current.toLocaleString();
+
+
+},20);
+
+
+});
+
 </script>
 <div class="scroll-container"><div id="shuffleBtn">⟳</div>
 <div id="scrollTopBtn">↑</div>
